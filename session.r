@@ -55,6 +55,10 @@ predict_outcome_of_match <- function(g, A, B) {
 	} else {
 		sum_of_scores <- sum(unlist(lapply(sp$res, function(p)sum(E(g,path=p)$r))))
 		
-		return(ifelse(sum_of_scores == 0), NA, sum_of_scores)
+		if(sum_of_scores == 0) {
+			return(NA)
+		} else {
+			sign(sum_of_scores)
+		}
 	}
 }
